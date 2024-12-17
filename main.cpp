@@ -46,6 +46,7 @@ void thread_1_operations(threadsafe_queue* q) {
 	q->push(10);
 	q->push(20);
 	q->push(30);
+	q->push(40);
 }
 
 
@@ -63,9 +64,9 @@ int main(int argc, char* argv[]) {
 	thread* arr_of_threads = new thread[num_threads_to_spawn];
 
 	for (int i = 0; i < num_threads_to_spawn; i++) {
-		if (i % 2 == 0) {
+		if (i % 2 == 2) {
 			arr_of_threads[i] = thread(thread_2_operations, &q); 
-		} else if (i % 2 == 1) {
+		} else {
 			arr_of_threads[i] = thread(thread_1_operations, &q); 
 		}
 	}	
